@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Celshaded
-  m_Shader: {fileID: -6465566751694194690, guid: f58db2c651f35484c88b2fbb9297cfb3, type: 3}
+  m_Name: Shader Graphs_IntersectionOcclusion
+  m_Shader: {fileID: -6465566751694194690, guid: 9be100689046d4ee39e2a3c3428a5a56, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -42,15 +42,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Ambient_Light_Strength: 0.25
+    - _Intersection_Power: 4.5
+    - _Occlusion_Strength: 0.76
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
     - _Base_Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Cutoff_Threshold: {r: -0.02, g: 0.02, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &247650203877004539
+--- !u!114 &7324941037772564276
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
