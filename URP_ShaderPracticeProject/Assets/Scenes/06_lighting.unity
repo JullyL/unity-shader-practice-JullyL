@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 148540524}
   - component: {fileID: 148540523}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Cube_Rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 1213055089}
   - component: {fileID: 1213055088}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cube_Lit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -608,7 +608,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: abc4530cfdc674bc0bb3bd15079d8813, type: 3}
+  - {fileID: 2100000, guid: 16daddfc554dd4bc69f1b140fa341ff9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -648,7 +648,7 @@ Transform:
   m_GameObject: {fileID: 1213055087}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.56878, y: 0, z: -5.66182}
+  m_LocalPosition: {x: -5.56878, y: 0.06, z: -5.67}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 1369049393}
   - component: {fileID: 1369049392}
   m_Layer: 0
-  m_Name: Sphere (1)
+  m_Name: Sphere_CelShaded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 1740205952}
   - component: {fileID: 1740205951}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Sphere_Rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

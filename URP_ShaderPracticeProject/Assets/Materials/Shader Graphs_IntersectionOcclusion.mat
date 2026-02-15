@@ -42,8 +42,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Intersection_Power: 4.5
-    - _Occlusion_Strength: 0.76
+    - _Intersection_Power: 1.1
+    - _Occlusion_Strength: 0.85
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
