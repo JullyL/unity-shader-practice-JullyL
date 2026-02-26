@@ -38,9 +38,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _BodyEmission: 0
+    - _GradientOffset: 0.1
+    - _GradientScale: 0.5
+    - _Metallic: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    - _RimPower: 3
+    - _RimStrength: 0.5
+    - _Smoothness: 0.4
+    m_Colors:
+    - _BaseColor: {r: 0.11534355, g: 0.20315658, b: 0.9056604, a: 1}
+    - _BottomColor: {r: 0.254094, g: 0.24181205, b: 0.3584906, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _RimColor: {r: 0.0993236, g: 0.2505263, b: 0.6792453, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &3733589308847862734

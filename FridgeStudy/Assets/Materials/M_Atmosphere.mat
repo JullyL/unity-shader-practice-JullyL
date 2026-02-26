@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Glass
-  m_Shader: {fileID: -6465566751694194690, guid: 51858ecb059bc407e845ceb4af3a8fd8, type: 3}
+  m_Name: M_Atmosphere
+  m_Shader: {fileID: -6465566751694194690, guid: f3c310123a15c4900945db2237450359, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -38,17 +38,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CenterAlpha: 0.05
-    - _EdgeAlpha: 0.1
-    - _FresnelPower: 3
-    - _MilkStrength: 59
+    - _GradientOffset: 0.4
+    - _GradientScale: 1.5
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _GlassTint: {r: 0.78653437, g: 0.8464637, b: 0.9528302, a: 1}
+    - _ButtomColor: {r: 0.18039215, g: 0.0627451, b: 0.38431373, a: 1}
+    - _TopColor: {r: 0.10196077, g: 0.33725488, b: 0.62745106, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &3539561067856321154
+--- !u!114 &1821244183777706098
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

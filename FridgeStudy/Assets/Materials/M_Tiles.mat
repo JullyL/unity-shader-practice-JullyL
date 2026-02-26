@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Glass
-  m_Shader: {fileID: -6465566751694194690, guid: 51858ecb059bc407e845ceb4af3a8fd8, type: 3}
+  m_Name: M_Tiles
+  m_Shader: {fileID: -6465566751694194690, guid: a1ee56af3ae1446d692e37d734d58ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -38,17 +38,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CenterAlpha: 0.05
-    - _EdgeAlpha: 0.1
-    - _FresnelPower: 3
-    - _MilkStrength: 59
+    - _FadeEnd: 9
+    - _FadeStart: 2
+    - _LineSoftness: 0.008
+    - _LineWidth: 0.004
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _TileScale: 4
     m_Colors:
-    - _GlassTint: {r: 0.78653437, g: 0.8464637, b: 0.9528302, a: 1}
+    - _BottomColor: {r: 0.16862746, g: 0.08627451, b: 0.38039216, a: 1}
+    - _LineColor: {r: 0.15686275, g: 0.18039216, b: 0.46666667, a: 1}
+    - _TopColor: {r: 0.8160377, g: 0.8528302, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &3539561067856321154
+--- !u!114 &4220884078300100776
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
