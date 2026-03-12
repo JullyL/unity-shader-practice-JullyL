@@ -105,7 +105,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DepthScale: 25
+    - _DepthScale: 24.2
     - _DepthWeight: 1.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
@@ -116,8 +116,8 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _NormalBias: 0.05
-    - _NormalScale: 1
+    - _NormalBias: 0.61
+    - _NormalScale: 3
     - _NormalWeight: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -131,9 +131,9 @@ Material:
     - _Surface: 0
     - _Thickness: 1
     - _Threshold: 0.45
-    - _Wobble: 0.8
-    - _WobbleFPS: 6
-    - _WobbleScale: 134
+    - _Wobble: 1.076
+    - _WobbleFPS: 18.8
+    - _WobbleScale: 108
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1
