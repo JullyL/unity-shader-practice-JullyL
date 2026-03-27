@@ -109,8 +109,8 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _DepthStrength: 1.35
-    - _DepthThreshold: 0.0021
+    - _DepthStrength: 0.1
+    - _DepthThreshold: 0.0001
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -126,10 +126,10 @@ Material:
     - _HatchThreshold: 0
     - _HatchTiling: 140
     - _Metallic: 0
-    - _NormalStrength: 0.14
-    - _NormalThreshold: 0.069
+    - _NormalStrength: 0.03
+    - _NormalThreshold: 0.004
     - _OcclusionStrength: 1
-    - _OutlineNoise: 0.77
+    - _OutlineNoise: 1.91
     - _Parallax: 0.005
     - _PosterizeSteps: 8
     - _QueueOffset: 0
@@ -143,7 +143,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _Thickness: 1.24
+    - _Thickness: 1.16
     - _WorkflowMode: 1
     - _XRMotionVectorsPass: 1
     - _ZWrite: 1

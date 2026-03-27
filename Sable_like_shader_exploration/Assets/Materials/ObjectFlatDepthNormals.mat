@@ -121,18 +121,18 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _HatchDensity: 14
-    - _HatchNormalStrength: 0.7
-    - _HatchThickness: 0.08
+    - _HatchNormalStrength: 0.35
+    - _HatchThickness: 0.066
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _PosterizeSteps: 3.14
+    - _PosterizeSteps: 2
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _ShadowLift: 0.2
-    - _ShadowBand1: 0.75
+    - _ShadowBand1: 0.399
     - _ShadowBand2: 0.5
     - _ShadowBand3: 0.25
+    - _ShadowLift: 0.126
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
