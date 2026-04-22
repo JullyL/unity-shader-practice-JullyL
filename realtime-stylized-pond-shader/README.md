@@ -1,177 +1,101 @@
-# Real-Time Stylized Pond Shader with Mask-Based Animation
+# Real-Time Watercolor Pond Rendering with Shader-Driven Animation
 
 ## Project Overview
-This project explores a real-time stylized pond shader system in Unity (URP), inspired by the visual harmony of koi fish and lily pads in traditional Chinese aesthetics.  
-The core idea is to create rich layered motion and appearance effects through shader logic and texture-driven data, instead of complex geometry or expensive simulation.
+This project builds a stylized koi pond (water + lily pads + fish) in a 3D/2.5D setup inside Unity URP, then renders it through a **watercolor-inspired non-photorealistic shader pipeline**. The focus is shader-first: textures act as compact data inputs (masks, UV paths, depth), while the shader constructs the final watercolor appearance (wash, edge softness/bleeding, paper grain interaction) procedurally at runtime.
 
 ## Objectives
-- Simulate layered water, lily pads, and animated koi fish in a single pond scene.
-- Use mask maps and depth maps to control visibility, reveal order, and timing.
-- Use custom UV mapping for fish movement paths.
-- Achieve visually compelling animation with minimal geometry and strong runtime performance.
+- Render a coherent watercolor pond scene with layered motion and depth using lightweight 3D geometry (planes/layers).
+- Use mask maps, depth maps, and UV channels as control signals for reveal, timing, and spatial separation.
+- Encode fish motion paths in UV2 and animate via time-based UV scrolling (fish are 2D sprites projected in the shader).
+- Procedurally generate water wash and stylization, reducing reliance on fully authored albedo textures.
+- Maintain strong runtime performance in URP with an artist-friendly set of exposed parameters.
 
 ## Core Technical Approach
 
-### 1) Texture Design (Substance Designer)
-**Water Environment**
-- Water albedo with soft painterly color variation.
+### 1) Scene + Data Assets (minimal textures)
+**Geometry setup (3D/2.5D)**
+- Pond bottom plane, water surface plane, lily pad planes, fish quads (offset in Y).
+- Orthographic or mostly top-down camera to preserve the illustrative look.
 
-**Lily Pad System**
-- Plant albedo (lily pads composited with water style).
-- Plant normal map (leaf detail + subtle ripple distortion support).
-- Binary mask map (defines lily pad regions for blending and control).
-- Grayscale depth map (defines ordered reveal timing per lily pad).
+**Textures (minimal + data-driven)**
+- Lily pad binary mask (required): drives reveal and edge effects.
+- Depth map (recommended): controls ordered reveal and depth-based styling.
+- Paper grain (optional): modulates color absorption/breakup for watercolor feeling.
+- Fish atlas PNG with transparency.
 
-**Fish**
-- Transparent koi PNG textures for compositing.
+*(Optional)* supplementary maps: a subtle normal map for leaf bumps/variation, roughness variations, etc.
 
 ### 2) UV Mapping Strategy (Blender + Unity)
-- **UV1**: Standard base texture mapping for water and lily pad layers.
-- **UV2**: Encoded fish path layout used for time-driven movement in shader.
+- **UV1**: standard mapping for mask/paper grain and any support textures.
+- **UV2**: stores fish movement paths flattened into UV space, enabling fish motion through `time * speed` UV offsets.
 
 ### 3) Shader Implementation (Shader Graph or HLSL)
-**Water Layer**
-- Base texture sampling.
-- Normal-map-based UV distortion to simulate gentle refraction.
+**Water (Procedural Wash)**
+- Layered noise (e.g., FBM) generates the base wash.
+- Slow drift offsets produce gentle pigment/water movement.
+- Paper grain modulates intensity and "absorption."
 
-**Lily Pad Layer**
-- Mask-based blending between water and plant textures.
-- Depth-driven reveal using `smoothstep` for ordered, soft animation.
+**Watercolor Edge Effects (Lily Pads)**
+- Use the lily mask gradients to derive a soft edge mask.
+- Add noise-distorted thresholding to create bleeding edges and pigment pooling/darkening near boundaries.
+- Use depth map for reveal order and subtle depth tinting/opacity shifts.
 
 **Fish Layer**
-- UV2-based sampling for fish path control.
-- Time-driven UV offset for movement.
-- Alpha blending for clean compositing over water.
+- Sample fish texture using UV2 + time offset.
+- Apply mild underwater distortion + depth tint to integrate fish below the water plane.
 
 **Final Composition**
-- Layered blending and interpolation controlled by maps and timing parameters.
+- Layered blending (water + lily pads + fish) controlled by masks and depth styling.
+- Global stylization pass to unify colors/contrast into an illustrative watercolor palette.
 
 ## Expected Results
-- A visually rich animated pond scene.
-- Smooth and ordered appearance of lily pads.
-- Living fish motion along predefined paths.
-- Full effect achieved on a single plane mesh via shader logic.
+- A watercolor-rendered pond that looks painterly and cohesive (wash + paper grain + soft edges).
+- Shader-driven reveal and motion, with clear separation between data inputs (maps/UV) and procedural rendering.
+- Smooth fish motion along UV2 paths with convincing underwater integration.
+- Efficient runtime with minimal geometry and controllable complexity.
 
 ## Toolchain
 - Unity (URP)
 - Shader Graph and/or HLSL
-- Adobe Substance 3D Designer
-- Blender (UV2 layout)
+- Blender (UV2 path layout)
+- Photoshop/Procreate (optional reference textures)
+- Substance Designer (optional, for supplemental maps)
 
 ## Suggested Folder Structure
 ```text
 realtime-stylized-pond-shader/
   README.md
   Docs/
-    Proposal/
-    FinalReport/
   Textures/
-    Water/
-    LilyPads/
+    Masks/
     Fish/
+    Paper/
   Materials/
   Shaders/
   Scenes/
   References/
 ```
 
-## Milestone Plan
-1. **Texture Authoring**: Create water, lily pad, mask, depth, and fish textures.
-2. **UV Setup**: Build UV1/UV2 layouts and validate path readability.
-3. **Shader Layering**: Implement water + lily pad blending.
-4. **Animation Logic**: Add depth-driven reveal and fish UV animation.
-5. **Polish & Optimization**: Tune visual style, performance, and exposed controls.
+## Milestone Plan (2 weeks)
 
-## 2-Week Completion Plan
+### Week 1 – Core Shader System (Apr 22–Apr 28)
+1. **Project setup + references**: lock style targets (watercolor wash + paper + soft edges); set up scene layers and camera.
+2. **UV path + fish data**: create UV2 fish paths in Blender; import and verify UV2 in Unity.
+3. **Procedural water wash**: implement FBM noise wash + drift + paper modulation.
+4. **Lily pad reveal + bleeding**: mask blending, depth-based reveal, and noise edge bleeding.
+5. **Fish compositing**: fish UV2 sampling, underwater distortion, depth tint integration.
 
-### Week 1 - Build Core Assets and Shader Foundation (Apr 15-Apr 21)
-**Day 1 (Wed, Apr 15): Project setup + references**
-- Organize folders (`Textures`, `Shaders`, `Materials`, `Scenes`, `Docs`).
-- Collect visual references and lock style targets (watercolor + stylized pond mood).
-- Create a test scene with a single plane and basic lighting.
-
-**Day 2 (Thu, Apr 16): Water texture authoring**
-- Create and export water albedo.
-- Build first-pass normal map for subtle distortion and ripple direction.
-- Import textures into Unity and verify color space/settings.
-
-**Day 3 (Fri, Apr 17): Lily pad texture set**
-- Author lily pad albedo and normal map.
-- Create binary mask map for lily pad regions.
-- Validate edge quality and alpha cleanliness.
-
-**Day 4 (Sat, Apr 18): Depth map logic**
-- Author grayscale depth map with varied values per lily pad.
-- Check value distribution to support ordered reveal.
-- Prepare quick debug material to visualize depth values in Unity.
-
-**Day 5 (Sun, Apr 19): UV pipeline**
-- Build UV1 base mapping.
-- Create UV2 fish-path layout in Blender.
-- Import and verify UV2 channels are preserved in Unity mesh data.
-
-**Day 6 (Mon, Apr 20): Water + lily pad shader integration**
-- Implement water base sampling and normal-driven UV distortion.
-- Add mask-based blending for lily pads.
-- Expose parameters for blend strength and distortion intensity.
-
-**Day 7 (Tue, Apr 21): Lily pad reveal animation**
-- Add depth-driven reveal using `smoothstep`.
-- Tune reveal thresholds/speed and test different timing curves.
-- Capture first video/gif test for progress tracking.
-
-### Week 2 - Add Fish Animation, Polish, and Final Delivery (Apr 22-Apr 28)
-**Day 8 (Wed, Apr 22): Fish texture + compositing setup**
-- Import koi PNG textures.
-- Add fish layer sampling and alpha blending in shader graph/HLSL.
-- Confirm sorting/compositing order against water and lily pads.
-
-**Day 9 (Thu, Apr 23): UV2 fish movement**
-- Implement time-based UV2 offset for movement paths.
-- Add speed, offset, and phase controls.
-- Test multiple fish variants or repeated sampling for richer motion.
-
-**Day 10 (Fri, Apr 24): Final layered composition**
-- Integrate water, lily, and fish into a single master material.
-- Normalize parameter ranges for artist-friendly controls.
-- Check for artifacts at mask edges and texture seams.
-
-**Day 11 (Sat, Apr 25): Artistic polish**
-- Fine-tune color grading, contrast, and painterly style consistency.
-- Improve ripple/refraction subtlety to avoid noisy visuals.
-- Match overall pacing between fish motion and lily reveal.
-
-**Day 12 (Sun, Apr 26): Optimization + profiling**
-- Profile performance in Unity (frame timing, overdraw, shader cost).
-- Reduce unnecessary texture samples where possible.
-- Finalize shader keywords/toggles and clean unused nodes.
-
-**Day 13 (Mon, Apr 27): Documentation + report assets**
-- Capture screenshots and short clips of final effect.
-- Document node logic / HLSL sections and parameter descriptions.
-- Draft final report sections (method, implementation, results).
-
-**Day 14 (Tue, Apr 28): Final QA + submission prep**
-- Run a final pass for bugs, import settings, and scene cleanliness.
-- Package project artifacts (scene, shader, textures, docs).
-- Complete final report and submission checklist.
-
-### Review Week Buffer (Apr 29-Apr 30)
-**Wed, Apr 29: Contingency + rehearsal**
-- Reserve time for unexpected fixes, shader regressions, or visual tuning.
-- Rehearse final review demo flow and verify scene load reliability.
-- Prepare backup media (video capture + screenshots) in case of runtime issues.
-
-**Thu, Apr 30: Final Review**
-- Deliver final review presentation and live/demo walkthrough.
-- Submit final report and project package (if submission is same day).
+### Week 2 – Polish + Scalability (Apr 29–May 5)
+6. **Global stylization pass**: unify palette, contrast, and watercolor feeling.
+7. **Exposed controls**: time scale, wash drift, bleed strength, depth tint, fish speed/phase.
+8. **Optimization + profiling**: reduce samples/branches, tune performance.
+9. **Documentation + deliverables**: screenshots/clips, parameter notes, final README/proposal/report summary.
 
 ### Final Deliverables Checklist
-- Stylized pond shader scene running in Unity URP.
+- Watercolor pond shader scene running in Unity URP.
 - Master shader/material with exposed controls.
-- Texture set (water, lily pads, mask, depth, fish).
+- Data texture set (lily pad mask, depth map, paper grain, fish atlas).
 - Documentation (proposal, final report, implementation notes, media captures).
 
 ## Significance
-This project demonstrates how texture maps and UV channels can encode spatial and temporal logic for lightweight real-time animation.  
-Beyond technical efficiency, it also bridges cultural visual language and computational art practice by reinterpreting traditional pond aesthetics in interactive digital form.
+This project shows how shader-based, data-driven rendering can produce rich watercolor-style visuals without heavy geometry, simulation, or texture pipelines. UV channels become behavior carriers, masks/depth become timing and styling signals, and the shader acts as the "painter," bridging procedural design thinking with interactive, real-time visual expression rooted in a culturally inspired koi-and-lotus motif.
