@@ -44,11 +44,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FishAlbedo:
-        m_Texture: {fileID: 2800000, guid: 4eaca38eb2f36470283e44c3903d288c, type: 3}
+        m_Texture: {fileID: 2800000, guid: c1073f77ee66d4eb0bb2fa55b1be08ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FishMask:
-        m_Texture: {fileID: 2800000, guid: 4eaca38eb2f36470283e44c3903d288c, type: 3}
+        m_Texture: {fileID: 2800000, guid: c1073f77ee66d4eb0bb2fa55b1be08ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FishTexture:
@@ -76,10 +76,10 @@ Material:
     - _Fish2CurveAmp: 0
     - _Fish2Density: 0.633
     - _Fish2Opacity: 1
-    - _Fish2Scale: 1.84
+    - _Fish2Scale: 2.06
     - _Fish2ScaleX: 3.02
     - _Fish2ScaleY: 4.29
-    - _Fish2Speed: 0.3
+    - _Fish2Speed: 0.4
     - _Fish2WagAmp: -0.3
     - _Fish2WagSpeed: 0
     - _Fish2YOffset: -0.252
