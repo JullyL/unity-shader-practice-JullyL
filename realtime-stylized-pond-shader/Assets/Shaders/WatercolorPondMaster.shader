@@ -27,6 +27,7 @@ Shader "Pond/WatercolorPondMaster"
         _LilyVeinCount ("Lily Vein Count", Float) = 6
         _LilyVeinIntensity ("Lily Vein Intensity", Range(0, 0.5)) = 0.1
         _LilyColorVariation ("Lily Color Variation", Range(0, 0.2)) = 0.08
+        _LilyPadOpacity ("Lily Pad Opacity", Range(0, 1)) = 1.0
 
         [Header(Fish 1)]
         _FishMask ("Fish Mask", 2D) = "black" {}
@@ -138,6 +139,7 @@ Shader "Pond/WatercolorPondMaster"
                 float _LilyVeinCount;
                 float _LilyVeinIntensity;
                 float _LilyColorVariation;
+                float _LilyPadOpacity;
                 float _WashScale;
                 float _DriftSpeed;
                 float _PaperStrength;
@@ -337,10 +339,10 @@ Shader "Pond/WatercolorPondMaster"
                 float3 fish3Color = SAMPLE_TEXTURE2D(_Fish3Albedo, sampler_Fish3Albedo, TRANSFORM_TEX(fish3UV, _Fish3Albedo)).rgb;
                 color = lerp(color, fish3Color, fish3Mask * _Fish3Opacity);
 
-                color = lerp(color, lilyColor, max(lilyCore * 0.96, lilySoft * 0.45));
+                color = lerp(color, lilyColor, max(lilyCore * 0.96, lilySoft * 0.45) * _LilyPadOpacity);
 
                 color = saturate(color);
-                float alpha = saturate(max(_SurfaceOpacity, max(lilySoft, fishMask * 0.65)));
+                float alpha = saturate(max(_SurfaceOpacity, max(lilySoft * _LilyPadOpacity, fishMask * 0.65)));
                 return half4(color, alpha);
             }
             ENDHLSL
